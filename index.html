@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse — Новости технологий</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Последние новости технологий, гаджетов, искусственного интеллекта и интернета.">
+    <meta name="keywords" content="новости, технологии, IT, искусственный интеллект, гаджеты">
+    <meta name="Виктория" content="ПО-245">
+
+    <style>
+  
+        .full-article-view {
+            display: none; 
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .article-top-bar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #0052a3;
+        }
+
+        .article-category-badge {
+            color: #0066cc;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .full-article-view h1 {
+            font-size: 30px;
+            line-height: 1.35;
+            color: #111111;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .article-meta {
+            color: #888888;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .article-hero-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .article-body {
+            font-size: 17px;
+            line-height: 1.75;
+            color: #333333;
+        }
+
+        .article-body h2 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 22px;
+            color: #111111;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-section" onclick="showNewsFeed(); return false;">
+                <div class="logo-icon">T</div>
+                <span class="logo-title">TechPulse</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" onclick="showNewsFeed(); return false;">Главная</a></li>
+                    <li><a href="#ai" onclick="showNewsFeed();">Искусственный интеллект</a></li>
+                    <li><a href="#gadgets" onclick="showNewsFeed();">Гаджеты</a></li>
+                    <li><a href="#soft" onclick="showNewsFeed();">Софт</a></li>
+                    <li><a href="#startups" onclick="showNewsFeed();">Стартапы</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="Поиск новостей...">
+                <button class="search-btn"></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="news-feed">
+            <h1 class="section-title">Главные события технологий</h1>
+
+            <div class="news-grid">
+                
+                <article id="ai" class="news-card main-news">
+                    <img src="https://i.pinimg.com/1200x/de/bb/4f/debb4f184ed5b37ca4877b05e5f4f0a0.jpg" alt="ИИ" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Искусственный интеллект</span>
+                        <h2 class="news-title">Революция в генеративных моделях: представлен новый мультимодальный ИИ, понимающий физический мир</h2>
+                        <p class="news-excerpt">Ведущие инженеры презентовали архитектуру нейросети, способную не просто анализировать текст и графику...</p>
+                        <div class="news-footer">
+                            <span class="news-date">29 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-ai')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="gadgets" class="news-card">
+                    <img src="https://i.pinimg.com/736x/88/10/f2/8810f210a7f968357ecba3179b56dd35.jpg" alt="Смартфон" class="news-image">
+                  <div class="news-content">
+                        <span class="news-category">Гаджеты</span>
+                        <h3 class="news-title">Смартфоны будущего: прозрачные экраны выходят на рынок</h3>
+                        <p class="news-excerpt">Первая коммерческая партия устройств с гибким OLED-дисплеем поступит в продажу уже в следующем месяце.</p>
+                        <div class="news-footer">
+                            <span class="news-date">28 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-gadgets')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://i.pinimg.com/736x/de/f9/05/def905d7541db7ce150a4acb4cbdfe9c.jpg" alt="Кибербезопасность" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Безопасность</span>
+                        <h3 class="news-title">Квантовое шифрование становится стандартом</h3>
+                        <p class="news-excerpt">Крупнейшие банки мира завершили миграцию на защищенные алгоритмы связи нового поколения.</p>
+                        <div class="news-footer">
+                            <span class="news-date">28 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-security')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="startups" class="news-card">
+                    <img src="https://i.pinimg.com/1200x/4f/90/20/4f9020467f4e173e47b989cb42835ee5.jpg" alt="Космос" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Космос</span>
+                        <h3 class="news-title">Частная орбитальная станция приняла первую миссию</h3>
+                        <p class="news-excerpt">Исторический запуск открывает новую эру коммерческого освоения околоземного пространства.</p>
+                        <div class="news-footer">
+                            <span class="news-date">27 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-space')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://i.pinimg.com/1200x/bb/74/3a/bb743a615972d68da9daeb81b6309cdd.jpg" alt="Игры" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Игры</span>
+                        <h3 class="news-title">Облачный гейминг без задержек: прорыв в коде</h3>
+                        <p class="news-excerpt">Новый сетевой протокол снижает пинг до неразличимых человеком значений.</p>
+                        <div class="news-footer">
+                            <span class="news-date">27 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-gaming')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://i.pinimg.com/736x/3a/65/c7/3a65c70c06d009dcf7be00fb92bca43d.jpg" alt="Робототехника" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Робототехника</span>
+                        <h3 class="news-title">Домашние роботы-помощники научились готовить</h3>
+                        <p class="news-excerpt">Нейросетевое зрение позволяет автономным роботам адаптироваться к любой кухне.</p>
+                        <div class="news-footer">
+                            <span class="news-date">26 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-robotics')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="soft" class="news-card">
+                    <img src="https://i.pinimg.com/1200x/af/4d/a2/af4da2ca520d15d1f1fee6ee8b034a5a.jpg" alt="Офис" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Софт</span>
+                        <h3 class="news-title">Интерфейсы мысли: тестирование нейроинтерфейсов</h3>
+                        <p class="news-excerpt">Успешные испытания беспроводного чипа для управления компьютером силой мысли.</p>
+                        <div class="news-footer">
+                            <span class="news-date">25 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-soft')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Процессоры" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">Железо</span>
+                        <h3 class="news-title">Новый техпроцесс кремниевых чипов</h3>
+                        <p class="news-excerpt">Энергоэффективность мобильных процессоров выросла в полтора раза за счет наноархитектуры.</p>
+                        <div class="news-footer">
+                            <span class="news-date">25 июня 2026</span>
+                            <button class="read-btn" onclick="openArticle('article-hardware')">Читать</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+        
+        <div id="article-ai" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Искусственный интеллект</span>
+            </div>
+            <h1>Революция в генеративных моделях: представлен новый мультимодальный ИИ, понимающий физический мир</h1>
+            <p class="article-meta">29 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.jpg.fish/i/bb867f01be61ef56f2beeeecf2d0faee.jpeg" alt="ИИ" class="article-hero-img">
+            <div class="article-body">
+                <p>Ведущие инженеры презентовали архитектуру нейросети, способную не просто анализировать текст и графику, но и моделировать реальные физические процессы в реальном времени с точностью до миллисекунды.</p>
+                <p>Новая модель умеет просчитывать динамику жидкостей, прочность материалов и визуализировать сложные физические взаимодействия, что открывает огромные возможности для проектирования, робототехники и научных исследований.</p>
+                <p>Этот архитектурный сдвиг знаменует переход от генерации контента к автономному планированию в реальном времени. Модель воссоздает объемную геометрию сцены на основе видеопотоков и данных пространственных сенсоров, мгновенно просчитывая сотни гипотетических сценариев развития событий. Подобный уровень пространственного интеллекта открывает путь к созданию фундаментально новых автономных систем: антропоморфных роботов, способных выполнять сложную бытовую и производственную работу без предварительного программирования, а также беспилотного транспорта, готового к безопасной навигации в самых нестандартных дорожных ситуациях.</p>
+            </div>
+        </div>
+
+
+        <div id="article-gadgets" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Гаджеты</span>
+            </div>
+            <h1>Смартфоны будущего: прозрачные экраны выходят на рынок</h1>
+            <p class="article-meta">28 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/736x/88/10/f2/8810f210a7f968357ecba3179b56dd35.jpg" alt="Смартфон" class="article-hero-img">
+            <div class="article-body">
+                <p>Первая коммерческая партия устройств с гибким OLED-дисплеем поступит в продажу уже в следующем месяце.</p>
+                <p>Экран обеспечивает прозрачность до 80% в выключенном состоянии и полную контрастность при включении пикселей. Устройство также поддерживает подэкранную зарядку от внешнего света.</p>
+                <p>Главной инженерной задачей при создании коммерческого образца стало перераспределение аппаратных компонентов. Поскольку аккумуляторы, процессоры и системные платы остаются непрозрачными, их скомпоновали в компактных непрозрачных зонах корпуса и боковых гранях. Помимо футуристичного внешнего вида, технология открывает новые сценарии использования: просмотр элементов дополненной реальности без использования специальных очков, интерактивную съемку с отображением информации для объекта перед камерой, а также повышенную энергоэффективность за счет отключения незадействованных пикселей.</p>
+            </div>
+        </div>
+
+        <div id="article-security" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Безопасность</span>
+            </div>
+            <h1>Квантовое шифрование становится стандартом банковской отрасли</h1>
+            <p class="article-meta">28 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/736x/de/f9/05/def905d7541db7ce150a4acb4cbdfe9c.jpg" alt="Кибербезопасность" class="article-hero-img">
+            <div class="article-body">
+                <p>Крупнейшие транснациональные банки и финансовые структуры завершили глобальную миграцию на защищенные алгоритмы квантового распределения ключей.</p>
+                <p>Традиционные методы шифрования рискуют стать уязвимыми перед квантовыми компьютерами. Защита нового поколения гарантирует абсолютную безопасность межбанковских транзакций.</p>
+                <p>Традиционная финансовая система (включая межбанковские сети SWIFT, SEPA и платежные системы Visa/Mastercard) десятилетиями полагалась на алгоритмы асимметричного шифрования с открытым ключом — RSA и ECC (криптография на эллиптических кривых).Алгоритм Шора: Мощный квантовый компьютер, использующий алгоритм Шора, способен разложить гигантские числа на простые множители или вычислить дискретные логарифмы за считанные минуты. В результате классические ключи шифрования взламываются практически мгновенно.   Угроза «Store Now, Decrypt Later» (Сохраняй сейчас, расшифровывай потом): Киберпреступники и государственные группировки годами перехватывали и сохраняли зашифрованный межбанковский трафик. Даже не имея возможности расшифровать его сегодня, они рассчитывали сделать это сразу после появления первого достаточного по мощности квантового процессора. Завершение миграции обесценило все перехваченные ранее архивы.</p>
+            </div>
+        </div>
+
+        <div id="article-space" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Космос</span>
+            </div>
+            <h1>Частная орбитальная станция приняла первую коммерческую миссию</h1>
+            <p class="article-meta">27 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/1200x/4f/90/20/4f9020467f4e173e47b989cb42835ee5.jpg" alt="Космос" class="article-hero-img">
+            <div class="article-body">
+                <p>Исторический запуск открывает новую эру коммерческого освоения околоземного пространства.</p>
+                <p>Экипаж из четырех исследователей проведет на орбите 30 дней, проводя эксперименты по получению сверхчистых полупроводниковых кристаллов в микрогравитации.</p>
+                <p>Развертывание независимых платформ гарантирует непрерывное присутствие человека на низкой околоземной орбите на фоне приближающегося вывода МКС из эксплуатации. Новые комплексы изначально спроектированы под прикладные задачи бизнеса — от испытания материалов в условиях вакуума до выращивания белковых структур для фармацевтики и производства ультрачистых кристаллов для полупроводников. Благодаря адаптивной архитектуре и интеграции с современной многоразовой ракетно-космической техникой такие станции существенно снижают логистические издержки, открывая орбитальные исследования не только для государственных агентств, но и для частных компаний, научные экспедиций и суверенных космических программ.</p>
+            </div>
+        </div>
+
+        <div id="article-gaming" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Игры</span>
+            </div>
+            <h1>Облачный гейминг без задержек: прорыв в коде</h1>
+            <p class="article-meta">27 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/1200x/bb/74/3a/bb743a615972d68da9daeb81b6309cdd.jpg" alt="Игры" class="article-hero-img">
+            <div class="article-body">
+                <p>Новый сетевой протокол сжатия данных снижает задержку отклика до неразличимых человеком значений.</p>
+                <p>Инновационный алгоритм с помощью встроенной нейросети прогнозирует действия игрока, позволяя комфортно играть в 4K при 120 FPS даже при среднем интернет-соединении.</p>
+                <p>Создание протокола решает ключевую проблему всей индустрии — зависимость качества игрового процесса от сетевой инфраструктуры провайдера. Благодаря оптимизированной упаковке трафика и динамической корректировке ошибок, задержка ввода снижается до значений в несколько миллисекунд даже при нестабильном интернет-соединении. Технология стирает визуальную и тактильную разницу между стримингом с удаленного сервера и запуском игры на мощном локальном компьютере, открывая доступ к требовательным киберспортивным дисциплинам и высокодинамичным проектам на любых базовых устройствах.</p>
+            </div>
+        </div>
+
+        <div id="article-robotics" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Робототехника</span>
+            </div>
+            <h1>Домашние роботы-помощники научились готовить сложные блюда</h1>
+            <p class="article-meta">26 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/736x/3a/65/c7/3a65c70c06d009dcf7be00fb92bca43d.jpg" alt="Робототехника" class="article-hero-img">
+            <div class="article-body">
+                <p>Продвинутое компьютерное зрение позволяет автономным роботам нарезать продукты и контролировать процесс жарки в реальном времени.</p>
+                <p>Специальные датчики автоматически выявляют свежесть продуктов и адаптируются под рецепты любой сложности.</p>
+                <p>Благодаря алгоритмам обучения через наблюдение роботы способны воспроизводить сложные кулинарные техники по обычным видеозаписям, гибко подстраиваясь под особенности конкретной кухни. Они легко справляются с нестандартными ситуациями — от использования разной посуды и нарезки ингредиентов произвольной формы до безопасного маневрирования в ограниченном пространстве рядом с людьми. Этот технологический прорыв превращает домашних роботов из простых механических исполнителей в полноценных автономных помощников, способных самостоятельно планировать и готовить сложные блюда с учетом индивидуальных предпочтений хозяев.</p>
+            </div>
+        </div>
+
+        <div id="article-soft" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Софт</span>
+            </div>
+            <h1>Интерфейсы мысли: начались тестирования нейроинтерфейсов для ПК</h1>
+            <p class="article-meta">25 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://i.pinimg.com/1200x/af/4d/a2/af4da2ca520d15d1f1fee6ee8b034a5a.jpg" alt="Офис" class="article-hero-img">
+            <div class="article-body">
+                <p>Успешные испытания беспроводного чипа открыли возможность управлять ПК, набивать текст и взаимодействовать с интерфейсом силой мысли.</p>
+                <p>Скорость набора текста уже превышает 110 слов в минуту без использования мыши или клавиатуры.</p>
+                <p>Развитие медицинских и потребительских нейроинтерфейсов выходит далеко за рамки симуляции простых нажатий клавиш. Современные медицинские системы полагаются на микроскопические гибкие электроды, которые с помощью роботов-хирургов имплантируются непосредственно в мозг, минимально повреждая ткани и гарантируя высокую точность считывания электрических сигналов. Устройство транслирует активности нейронов через беспроводной приемник на внешний процессор, где алгоритмы машинного обучения в режиме реального времени декодируют намерения человека. Это позволяет пациентам с тяжелыми формами паралича или моторными заболеваниями взаимодействовать с цифровой средой — набирать текст, пользоваться браузером и управлять курсором со скоростью, сопоставимой со стандартным мышечным вводом.</p>
+            </div>
+        </div>
+
+        <div id="article-hardware" class="full-article-view">
+            <div class="article-top-bar">
+                <button class="back-btn" onclick="showNewsFeed()">← Назад к новостям</button>
+                <span class="article-category-badge">Железо</span>
+            </div>
+            <h1>Новый техпроцесс кремниевых чипов выводит автономность на новый уровень</h1>
+            <p class="article-meta">25 июня 2026 | Автор: Виктория ПО-245</p>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Процессоры" class="article-hero-img">
+            <div class="article-body">
+                <p>Переход на субнанометровую структуру транзисторов позволил поднять энергоэффективность чипов в полтора раза.</p>
+                <p>Новые процессоры выделяют на 40% меньше тепла, обеспечивая высокую скорость в сложных вычислениях без перегрева устройств.</p>
+                <p>Дополнительный прирост автономности обеспечивает внедрение магистралей обратной подачи питания (Backside Power Delivery Network). Перенос линий энергоснабжения на внутреннюю сторону кремниевой пластины освободил верхние слои для сигнальных соединений, критически снизив паразитное сопротивление и выделение тепла. В сочетании с чиплетной компоновкой и улучшенной литографией это позволяет современным смартфонам выполнять тяжелые задачи искусственного интеллекта и трехмерной графики, расходуя в полтора раза меньше энергии аккумулятора по сравнению с предыдущим технологическим узлом. </p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechPulse News. Все права защищены. Создано с использованием CSS Grid.</p>
+    </footer>
+
+    <script>
+        function openArticle(articleId) {
+            var feed = document.getElementById('news-feed');
+            if (feed) feed.style.display = 'none';
+            var articles = document.querySelectorAll('.full-article-view');
+            articles.forEach(function(art) {
+                art.style.display = 'none';
+            });
+            var target = document.getElementById(articleId);
+            if (target) {
+                target.style.display = 'block';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showNewsFeed() {
+            var articles = document.querySelectorAll('.full-article-view');
+            articles.forEach(function(art) {
+                art.style.display = 'none';
+            });
+            var feed = document.getElementById('news-feed');
+            if (feed) feed.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
